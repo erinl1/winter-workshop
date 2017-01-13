@@ -1,0 +1,60 @@
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js">
+  </script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+  integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+  integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+  crossorigin="anonymous"></script>
+</head>
+<div class = "container">
+  <div class="col-md-6">
+    <div class="hidden alert alert-success">You have added your social media information.</div>
+    <br><br/>
+    <form>
+      <div class="form-group">
+        <label for="item"> Item </label>
+        <input type="text" class="form-control" id="item" value = "iPhone 7" placeholder="Item">
+      </div>
+      <br><br/>
+      <div class="form-group">
+        <label for="price"> Price</label>
+        <input type="text" class="form-control" id="price" value = "600" placeholder="Price">
+      </div>
+      <br><br/>
+      <div class="form-group">
+        <label for="interestRate"> Interest Rate</label>
+        <input type="text" class="form-control" id="interestRate" value = "20%" placeholder="Interest Rate">
+      </div>
+      <br><br/>
+      <div class="form-group">
+        <label for="years"> Years</label>
+        <input type="text" class="form-control" id="years" value = "5" placeholder="Years">
+      </div>
+      <br>
+      <button id="button" class = "btn btn-primary">DONE</button>
+      <br>
+    </form>
+    <br>
+  </div>
+  <div class = "col-md-6">
+    <br><br><br>
+    <div id = "column" class = "container"></div>
+  </div>
+</div>
+<script>
+  $("form").submit(function (event){
+    event.preventDefault();
+    console.log("hello");
+    $("#column").html("The " + $("#item").val() + " with a price of $" +
+     $("#price").val() + " and an interest rate of " + $("#interestRate").val());
+  })
+</script>
+</html>
