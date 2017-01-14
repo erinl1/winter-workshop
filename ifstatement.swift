@@ -1,5 +1,6 @@
+import Foundation
 //let is constant
-var x: int = 1
+var x: Int = 1
 if x > 5 {
   print("true")
 } else if x < 5 {

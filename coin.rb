@@ -9,4 +9,5 @@ elsif rand == 25
   puts "quarter"
 else
   puts "no coin"
+  puts rand
 end
