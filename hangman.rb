@@ -26,6 +26,12 @@ for x in 1..guesses
     else
       state = false
     end
+    if state == false
+      puts "wrong. you have ", guesses-1, " guesses left"
+    else
+      blank_array[i] = letter_array[i]
+      puts "correct! you have " guesses, " guesses left"
+    end
   end
   puts state
 end
