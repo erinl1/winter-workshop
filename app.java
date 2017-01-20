@@ -19,16 +19,3 @@ class App {
 
   }
 }
-
-public class YourClass {
-    public static void main(String[] args) {
-      String item = args[0];
-      String years = args[1];
-      Integer.parseInt(years);
-
-        String sentence = "The total amount you would be paying for the " + " after " +
-        "years with a loan of " + " and an interest rate of " + " would be
-        $#{total} and the interest is $#{remainder}.";
-
-    }
-}
