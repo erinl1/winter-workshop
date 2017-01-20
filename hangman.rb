@@ -2,8 +2,8 @@ random_words = ["camera", "photo", "picture", "landscape", "light", "shadow", "l
 #the number is one more
 random_num = rand(0..7).to_i
 chosen_word = random_words[random_num]
-letter_array = chosen_word.chars
-blank_array = [ ]
+letter_array = chosen_word.chars.join()
+blank_array = [ ].join()
 guesses = 7
 state = true
 for i in 0..letter_array.length-1
@@ -20,8 +20,9 @@ puts prompt
 puts "You may begin guessing."
 puts prompt
 for x in 1..guesses
+  ["guess", "x"].join("_") = $stdin.gets.chomp
   for i in 0..letter_array.length-1
-    if $stdin.gets.chomp == letter_array[i]
+    if ["guess", "x"].join("_") == letter_array[i]
       state = true
     else
       state = false
@@ -30,7 +31,7 @@ for x in 1..guesses
       puts "wrong. you have ", guesses-1, " guesses left"
     else
       blank_array[i] = letter_array[i]
-      puts "correct! you have " guesses, " guesses left"
+      puts "correct! you have ", guesses, " guesses left"
     end
   end
   puts state
