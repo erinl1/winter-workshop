@@ -1,13 +1,14 @@
 random = rand(1..100).to_i
-if rand == 1
+case random
+when random == 1
   puts "penny"
-elsif rand == 5
+when random == 5
   puts "nickel"
-elsif rand == 10
+when random == 10
   puts "dime"
-elsif rand == 25
+when random == 25
   puts "quarter"
 else
   puts "no coin"
-  puts rand
+  puts random
 end
