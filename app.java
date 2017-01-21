@@ -16,19 +16,19 @@ class App {
     String str = "123";
     Integer.parseInt(str);
     System.out.println(name + " " + firstname + " " + lastname + " " + username + " " + number + " " + num + " " +str);
-
-  }
-}
-
-public class YourClass {
-    public static void main(String[] args) {
-      String item = args[0];
-      String years = args[1];
-      Integer.parseInt(years);
-
-        String sentence = "The total amount you would be paying for the " + " after " +
-        "years with a loan of " + " and an interest rate of " + " would be
-        $#{total} and the interest is $#{remainder}.";
-
+    HashMap <String, String> = monster
+    new HashMap <String, String>();
+    monster.put("name", "monster");
+    monster.put("eyes", "1");
+    switch (food) {
+      case "taco":
+        System.out.println(1);
+        break;
+      case "chicken":
+        System.out.println("chicken");
+        break;
+      default:
+      System.out.println("no");
     }
+  }
 }
