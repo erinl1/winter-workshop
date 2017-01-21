@@ -12,3 +12,22 @@ var s = String(x)
 var y:String = "17"
 var z:Int? = Int(y)
 print(name, firstname, lastname, username, number, s, z!, combine)
+let someCharacter:Character = "z"
+switch someCharacter {
+case "a";
+  print("blah")
+case "z"
+  print("zoo")
+default
+  print("no")
+}
+
+
+var monster: [String:AnyObject] = [
+  "name" : "monster" as AnyObject
+  "eyes" : 1 as AnyObject
+  "enjoys": [
+    "humans", "fishing"]
+  ]
+]
+}

@@ -24,3 +24,6 @@ puts 3/2.0
 puts "3".to_i
 #integer to string
 puts 3.to_s
+monster = {
+  "name" => "monster"
+}
