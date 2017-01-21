@@ -54,6 +54,7 @@ while guesses >= 0 && game_end == false
     end
     if finish == true
     puts "You have saved the man!"
+    game_end = true
     end
 
   if guesses == 0
