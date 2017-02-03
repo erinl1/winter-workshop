@@ -102,7 +102,7 @@ puts prompt
 if finish == "yes"
   puts "OK! Your #{description_cake} with #{description_amount} of #{description_flavor} in #{description_design} is in your cupcake box."
   cupcake = {
-    cake: description_cake,
+    cake: cake,
     amount: description_amount,
     flavor: description_flavor,
     design: description_design,
