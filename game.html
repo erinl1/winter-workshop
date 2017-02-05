@@ -55,14 +55,31 @@ crossorigin="anonymous"></script>
 <div class = "col-md-4">
 
   <p>Get to the end of your day at work by reaching 100% within the time limit.</p>
-  <h2></h2>
-  <div id = "percent"></div>
+  <div class = "text">
+    <div class = "h2"><h2 id = "percent"></h2></div>
+    <br>
+    <div class = "h2"><h2 id = "minutes"></h2></div>
+  </div>
 </div>
 
 
 <script>
-var x = 0;
-$("h2").append(x + "%");
+var y = 0;
+var z = 480;
+function text() {
+  console.log("no");
+if($('#' + row -1 + '-' + column).hasClass('block')){
+}
+else {
+$('#' + row + '-' + column).addClass('player');
+$(".text").remove();
+$("body").append("<div class = 'text'><div class = 'h2'><h2 id = 'percent'></h2></div><br><div class = 'h2'><h2 id = 'minutes'></h2></div></div>");
+$("#percent").append(y + "%");
+$("#minutes").append(z + " minutes left");
+}
+}
+$("#percent").append(y + "%");
+$("#minutes").append(z + " minutes left");
 for(i = 0; i < 10; i++){
   $("#wrapper").append("<div class='row" + i + "'>");
   for(x = 0; x < 10; x++){
@@ -91,53 +108,44 @@ document.onkeydown = function myFunction() {
     console.log("Up key is pressed" + column + row);
     if(row > 0){
       $('#' + row + '-' + column).removeClass('player energy');
-      row = row - 1
-      x = x + 5
-      if($('#' + row + '-' + column).hasClass('block')){
-      }
-      else {
-      $('#' + row + '-' + column).addClass('player');
+      row = row - 1;
+      y = y + 1;
+      z = z - 5;
+      text();
       break;
-    }
+      if($('#' + row + '-' + column).hasClass('energy')){
+
+      }
     }
     case 40:
     console.log("Down key is pressed" + column + row);
     if(row < 9){
       $('#' + row + '-' + column).removeClass('player energy');
-      row = row + 1
-      x = x + 5
-      if($('#' + row + '-' + column).hasClass('block')){
-      }
-      else {
-      $('#' + row + '-' + column).addClass('player');
+      row = row + 1;
+      y = y + 1;
+      z = z - 5;
+      text();
       break;
-    }
     }
     case 39:
     console.log("Right key is pressed" + column + row);
     if(column < 9){
       $('#' + row + '-' + column).removeClass('player energy');
-      column = column + 1
-      x = x + 5
-      if($('#' + row + '-' + column).hasClass('block')){
-      }
-      else {
-      $('#' + row + '-' + column).addClass('player');
+      column = column + 1;
+      y = y+ 1;
+      z = z - 5;
+      text();
       break;
-    }
     }
     case 37:
     console.log("left key is pressed");
     if(column > 0){
       $('#' + row + '-' + column).removeClass('player energy');
-      column = column - 1
-      x = x + 5
-      if($('#' + row + '-' + column).hasClass('block')){
-      }
-      else {
-      $('#' + row + '-' + column).addClass('player');
+      column = column - 1;
+      y = y + 1;
+      z = z - 5;
+      text();
       break;
-    }
     }
   }
 }
