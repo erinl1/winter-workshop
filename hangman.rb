@@ -1,6 +1,6 @@
 random_words = ["camera", "photo", "picture", "landscape", "light", "shadow", "lens", "portrait"]
 #the number is one more
-random_num = rand(0..7).to_i
+random_num = rand(random_words.length)
 chosen_word = random_words[random_num]
 letter_array = chosen_word.chars.join()
 blank_array = [ ]
@@ -23,7 +23,7 @@ puts prompt
   iftrue = false
   finish = true
   game_end = false
-while guesses >= 0 && game_end == false
+while guesses >= 0 && !game_end
   guess1 = STDIN.gets.chomp
   iftrue = false
   finish = true
