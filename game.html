@@ -5,34 +5,40 @@ body {
   background-color: black;
 }
 .energy {
-  background: #ffe700;
+  background: #a3d0e4;
 }
 .player {
-  background: #00006a;
+  background: #d5bdd2;
 }
 #wrapper {
-  height: 700;
-  width: 700;
+  height: 500px;
+  width: 500px;
   background: #f6f6f4;
 }
 .one {
   color: blue;
 }
 .box {
-  width:70px;
-  height:70px;
+  width:50px;
+  height:50px;
   border:1px solid white;
   float: left;
 }
-.row {
-  width: 700;
-  height: 70;
-}
+/*.row {
+width: 700;
+height: 70;
+}*/
 .block {
   background: #1e1e1e;
 }
 .remove {
   background: white;
+}
+.board {
+  float: left;
+}
+.writing {
+  float: left;
 }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -51,24 +57,27 @@ crossorigin="anonymous"></script>
 <body>
   <h1>Complete the assignment</h1>
   <br>
-  <div class = "col-md-6">
+  <h3>Get to the end of your day at work by reaching 100% within the time limit.</h3>
+  <br>
+
+  <br>
+  <div class = "board">
     <div id = "wrapper">
     </div>
   </div>
-  <div class = "col-md-2"></div>
-  <div class = "col-md-4">
-
-    <div id = "powerup"><h3>Get to the end of your day at work by reaching 100% within the time limit.</h3><br></div>
+  <div class = "writing">
     <div class = "text">
       <div class = "h2"><h2 id = "percent"></h2></div>
       <br>
-      <div class = "h2"><h2 id = "minutes"></h2></div>
+      <div class = "h2"><h2 id = "hours"></h2></div>
     </div>
+    <div id = "powerup"><br><div class = 'printEnergy' id = 'energyy'><h2></h2></div>
   </div>
+</div>
 
 </body>
 <script>
-var array = [
+let energyDescription = [
   {
     title: "a nap break: ",
     description: "despite losing 20 minutes, productivity rates improve from 1% to 5% for 10 spaces.",
@@ -127,45 +136,59 @@ var array = [
   },
 ]
 
-var y = 0;
-var z = 480;
-function text() {
+let y = 0;
+let z = 8.0;
+let percentage = 2;
+let hours = 0.2;
+setInterval(function(){
   $('#' + row + '-' + column).addClass('player');
   $(".text").remove();
-  $("body").append("<div class = 'text'><div class = 'h2'><h2 id = 'percent'></h2></div><br><div class = 'h2'><h2 id = 'minutes'></h2></div></div>");
+  $("body").append("<div class = 'text'><div class = 'h2'><h2 id = 'percent'></h2></div><br><div class = 'h2'><h2 id = 'hours'></h2></div></div>");
   $("#percent").append(y + "%");
-  $("#minutes").append(z + " minutes left");
-}
-
+  $("#hours").append(Math.round(z*10)/10 + " hours left");
+}, 100);
 $("#percent").append(y + "%");
-$("#minutes").append(z + " minutes left");
+$("#hours").append(Math.round(z*10)/10 + " hours left");
 // creates gameboard
-for(i = 0; i < 10; i++){
+let storeData = [];
+function energy(energyDescription) {
+  $('#' + row + '-' + column).removeClass('energy');
+  let powerup;
+  let energyType = Math.floor(Math.random() * (7)) + 1;
+  storeData.push(energyType);
+  let sentence = energyDescription[energyType].title + energyDescription[energyType].description;
+  $(".printEnergy").remove();
+  $("#powerup").append("<div class = 'printEnergy' id = 'energyy'><h2>"+ sentence +"</h2></div>");
+  console.log(energyType + energyDescription[energyType].title);
+
+}
+for(let i = 0; i < 10; i++){
   $("#wrapper").append("<div class='row" + i + "'>");
-  for(x = 0; x < 10; x++){
+  for(let x = 0; x < 10; x++){
     $("#wrapper").append("<div class = 'box' id='" + i + "-" + x + "'></div>")
   }
 }
 
 //player's initial coordinates
-var column = Math.floor(Math.random() * (10)) + 0;
-var row = Math.floor(Math.random() * (10)) + 0;
+let column = Math.floor(Math.random() * (10)) + 0;
+let row = Math.floor(Math.random() * (10)) + 0;
 //random blocks
 for(i = 0; i <= 30; i++){
-  var rand = Math.floor(Math.random() * (10)) + 0;
-  var rand2 = Math.floor(Math.random() * (10)) + 0;
+  let rand = Math.floor(Math.random() * (10)) + 0;
+  let rand2 = Math.floor(Math.random() * (10)) + 0;
   $("#" + rand + "-" + rand2).addClass('block');
 }
 //random energies
 for(i = 0; i <= 10; i++){
-  var rand = Math.floor(Math.random() * (10)) + 0;
-  var rand2 = Math.floor(Math.random() * (10)) + 0;
+  let rand = Math.floor(Math.random() * (10)) + 0;
+  let rand2 = Math.floor(Math.random() * (10)) + 0;
   $("#" + rand + "-" + rand2).addClass('energy').removeClass('block');
 }
 //prevents energy and block on same square
 $('#' + row + '-' + column).addClass('player').removeClass('block');
 console.log('#' + row + '-' + column);
-
+console.log("MEMEMEMEMEMEMEMEMEMEMEME");
+let x = 0;
 //arrow functions
 document.onkeydown = function myFunction() {
   switch (event.keyCode) {
@@ -180,28 +203,20 @@ document.onkeydown = function myFunction() {
       row = row - 1;
       $('#' + row + '-' + column).addClass("player");
       if($('#' + row + '-' + column).hasClass('energy')){
-        $('#' + row + '-' + column).removeClass('energy');
-        var powerup;
-        var energyType = Math.floor(Math.random() * (7)) + 1;
-        var sentence = array[energyType].title + array[energyType].description;
-        $("#powerup").append("<div id = 'energyy'><h2>"+ sentence +"</h2></div");
-        console.log(energyType + array[energyType].title);
+        energy(energyDescription);
         break;
       }
-      if($('#' + row + '-' + column).hasClass('block')){
+      else if($('#' + row + '-' + column).hasClass('block')){
         row = row + 1;
         $('#' + row + '-' + column).addClass("player");
         break;
       }
       else {
         $('#' + row + '-' + column).addClass('player');
-        y = y + 2;
-        z = z - 5;
-        text();
+        y = y + percentage;
+        z = z - hours;
+        //text();
       }
-      break;
-    }
-    else {
       break;
     }
     //down key
@@ -213,29 +228,21 @@ document.onkeydown = function myFunction() {
       $('#' + row + '-' + column).removeClass('player');
       row = row + 1;
       $('#' + row + '-' + column).addClass("player");
-      if($('#' + row + '-' + column).hasClass('energy')){
-        $('#' + row + '-' + column).removeClass('energy');
-        var powerup;
-        var energyType = Math.floor(Math.random() * (7)) + 1;
-        var sentence = array[energyType].title + array[energyType].description;
-        $("#powerup").append("<div id = 'energyy'><h2>"+ sentence +"</h2></div");
-        console.log(energyType + array[energyType].title);
-        break;
-      }
       if($('#' + row + '-' + column).hasClass('block')){
         row = row - 1;
         $('#' + row + '-' + column).addClass("player");
         break;
       }
+      else if($('#' + row + '-' + column).hasClass('energy')){
+        energy(energyDescription);
+        break;
+      }
       else {
         $('#' + row + '-' + column).addClass('player');
-        y = y + 2;
-        z = z - 5;
-        text();
+        y = y + percentage;
+        z = z - hours;
+        //  text();
       }
-      break;
-    }
-    else {
       break;
     }
     //right key
@@ -246,29 +253,21 @@ document.onkeydown = function myFunction() {
       $('#' + row + '-' + column).removeClass('player');
       column = column + 1;
       $('#' + row + '-' + column).addClass("player");
-      if($('#' + row + '-' + column).hasClass('energy')){
-        $('#' + row + '-' + column).removeClass('energy');
-        var powerup;
-        var energyType = Math.floor(Math.random() * (7)) + 1;
-        var sentence = array[energyType].title + array[energyType].description;
-        $("#powerup").append("<div id = 'energyy'><h2>"+ sentence +"</h2></div");
-        console.log(energyType + array[energyType].title);
-        break;
-      }
       if($('#' + row + '-' + column).hasClass('block')){
         column = column - 1;
         $('#' + row + '-' + column).addClass("player");
         break;
       }
+      else if($('#' + row + '-' + column).hasClass('energy')){
+        energy(energyDescription);
+        break;
+      }
       else {
         $('#' + row + '-' + column).addClass('player');
-        y = y + 2;
-        z = z - 5;
-        text();
+        y = y + percentage;
+        z = z - hours;
+        //text();
       }
-      break;
-    }
-    else {
       break;
     }
     //left key
@@ -279,30 +278,32 @@ document.onkeydown = function myFunction() {
       $('#' + row + '-' + column).removeClass('player');
       column = column - 1;
       $('#' + row + '-' + column).addClass("player");
-      if($('#' + row + '-' + column).hasClass('energy')){
-        $('#' + row + '-' + column).removeClass('energy');
-        var powerup;
-        var energyType = Math.floor(Math.random() * (7)) + 1;
-        var sentence = array[energyType].title + array[energyType].description;
-        $("#powerup").append("<div id = 'energyy'><h2>"+ sentence +"</h2></div");
-        console.log(energyType + array[energyType].title);
-        break;
-      }
       if($('#' + row + '-' + column).hasClass('block')){
         column = column + 1;
         $('#' + row + '-' + column).addClass("player");
         break;
       }
+      else if($('#' + row + '-' + column).hasClass('energy')){
+        energy(energyDescription);
+      }
       else {
         $('#' + row + '-' + column).addClass('player');
-        y = y + 1;
-        z = z - 5;
-        text();
+        y = y + percentage;
+        z = z - hours;
+        //  text();
       }
       break;
     }
-    else {
-      break;
+  }
+  let parameter = storeData.length-1
+  if(storeData.length > 0){
+    console.log("hello");
+    console.log(storeData);
+    while(x <= energyDescription[parameter].space){
+      percentage = energyDescription[parameter].percent;
+      hours = energyDescription[parameter].time;
+      x = x + 1;
+      console.log(percentage + " " + hours);
     }
   }
 }
