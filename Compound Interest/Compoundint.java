@@ -1,5 +1,5 @@
 
-public class Homework1 {
+public class Compoundint {
     public static void main(String[] args) {
       String item = args[0];
       double price = Double.parseDouble(args[1]);
