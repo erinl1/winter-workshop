@@ -16,6 +16,19 @@ class App {
     String str = "123";
     Integer.parseInt(str);
     System.out.println(name + " " + firstname + " " + lastname + " " + username + " " + number + " " + num + " " +str);
-
+    HashMap <String, String> = monster
+    new HashMap <String, String>();
+    monster.put("name", "monster");
+    monster.put("eyes", "1");
+    switch (food) {
+      case "taco":
+        System.out.println(1);
+        break;
+      case "chicken":
+        System.out.println("chicken");
+        break;
+      default:
+      System.out.println("no");
+    }
   }
 }
