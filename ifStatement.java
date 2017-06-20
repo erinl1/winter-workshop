@@ -11,5 +11,15 @@ public class ifStatement {
     else {
     System.out.println("no");
     }
+    switch (food) {
+      case "taco":
+        System.out.println(1);
+        break;
+      case "chicken":
+        System.out.println("chicken");
+        break;
+      default:
+      System.out.println("noo")
+    }
   }
 }

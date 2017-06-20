@@ -8,3 +8,11 @@ elsif x < 5
 else
   puts "false"
   end
+case food
+when "taco"
+  puts "taco"
+when "chicken"
+  puts "chicken"
+else
+  puts 2
+end
