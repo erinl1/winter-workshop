@@ -1,4 +1,5 @@
 # winter-workshop
+### short semester of learning basic java, swift and ruby.
 winter workshop
 how to push to github through terminal:
 
